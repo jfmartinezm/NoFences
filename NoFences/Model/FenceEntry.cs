@@ -24,6 +24,7 @@ namespace NoFences.Model
 
         public static FenceEntry FromPath(string path)
         {
+            path = Environment.ExpandEnvironmentVariables(path);
             if (File.Exists(path))
                 return new FenceEntry(path, EntryType.File);
             else if (Directory.Exists(path))
